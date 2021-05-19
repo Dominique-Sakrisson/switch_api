@@ -21,6 +21,8 @@ describe('Tests the ApiPage', () => {
             </MemoryRouter>);
             screen.getByText('Choose your favorite show');
             const ul = await screen.findByRole('list', {name: 'api-choices'});
+            expect(ul).not.toBeEmptyDOMElement();
+            expect(ul).toMatchSnapshot();
         
     })
 })

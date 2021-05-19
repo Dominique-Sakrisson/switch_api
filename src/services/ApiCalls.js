@@ -25,7 +25,7 @@ export const getAvatar = async (char) => {
     })
     return resArray;
 }
-
+//by running this conditional on char, which I know I will only call in details page which should show more information than the list page does about that character. This way I can in theory destructure all the properties off the object for the shape where as the other more broad page is a broader function call not requiring any additional specificity with arguments
 export const getRickNM = async (char) => {
     if(char){
         const res = await fetch(`https://rickandmortyapi.com/api/character/${char}`);
