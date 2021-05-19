@@ -5,10 +5,10 @@ import styles from './style.css'
 import {useCharacterDetails} from '../../hooks/characterDetails'
 import {useParams} from 'react-router-dom'
 
-const DetailsPage = ({match}) => {
+const DetailsPage = () => {
     const {id, api} = useParams();
     const {character, loading} = useCharacterDetails(id, api);
-    
+
     if(loading) return <h1>loading</h1>
     switch(api) {
         case 'avatar' :{

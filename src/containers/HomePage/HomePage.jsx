@@ -3,9 +3,7 @@ import ApiList from '../../components/Apis/ApiList.jsx'
 
 
 const ApiPage = () => {
-    const [loading, setLoading] = useState(true);
-    const [apis] = useState(['ricknm', 'avatar' ]);
-    return <ApiList apis={apis}/>
+    return <ApiList />
 }
 
 export default ApiPage;

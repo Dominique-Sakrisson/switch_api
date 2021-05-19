@@ -4,7 +4,8 @@ import ApiItem from './ApiItem'
 import PropTypes from 'prop-types'
 import styles from './styleApi.css'
 
-const ApiList = ({apis}) => (
+const apis = ['ricknm', 'avatar'];
+const ApiList = () => (
     <>
     <p>Choose your favorite show</p>
     <ul className={styles.apiList} aria-label='api-choices'>
@@ -19,7 +20,4 @@ const ApiList = ({apis}) => (
     </>
 )
 
-ApiList.propTypes= {
-    apis: PropTypes.array.isRequired
-}
 export default ApiList;
