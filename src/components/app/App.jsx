@@ -26,7 +26,6 @@ export default function App() {
             exact
             render={(routerProps) => <DetailsPage{...routerProps}/>} 
             />
-            
           </Switch>
         </Router>
       </header>
