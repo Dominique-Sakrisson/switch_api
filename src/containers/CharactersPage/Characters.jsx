@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import CharacterList from '../../components/Characters/CharacterList'
 import {chooseApi} from '../../services/ApiHandler'
 
+
 const Characters = ({match}) => {
     const [loading, setLoading] = useState(true);
     const [characters, setCharacters] = useState([]);

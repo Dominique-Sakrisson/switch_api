@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import HomePage from '../../containers/HomePage/HomePage';
 import Characters from '../../containers/CharactersPage/Characters'
-// import DetailsPage from '../../containers/DetailsPage/AvatarItemContainer.jsx';
+import DetailsPage from '../../containers/DetailsPage/DetailsPage'
 
 export default function App() {
   return(
@@ -22,10 +22,10 @@ export default function App() {
             exact
             render={(routerProps) => <Characters{...routerProps}/>} 
             />
-            {/* <Route path='/:api/:id' 
+            <Route path='/:api/:id' 
             exact
-            render={(routerProps) => <ApiDetailsPage{...routerProps}/>} 
-            /> */}
+            render={(routerProps) => <DetailsPage{...routerProps}/>} 
+            />
             
           </Switch>
         </Router>
