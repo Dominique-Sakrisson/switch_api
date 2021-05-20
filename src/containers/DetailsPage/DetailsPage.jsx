@@ -9,8 +9,10 @@ const DetailsPage = () => {
     const {id, api} = useParams();
     const {character, loading} = useCharacterDetails(id, api);
 
+        console.log(id, 'id')
+        console.log(api, 'api')
     if(loading) return <h1>loading</h1>
-    switch(api) {
+       switch(api) {
         case 'avatar' :{
             return (
                 <>
@@ -39,9 +41,12 @@ const DetailsPage = () => {
                 break;
         }
         default: {
-            <span>I Dont know of that api</span>
+            return <span>I Dont know of that api</span>
+            break;
         }
     }
-}
+    }
+    
+
 
 export default DetailsPage;

@@ -10,5 +10,6 @@ export const useCharacterDetails = (id, api) => {
         chooseApi(api, id)
         .then((character) => setCharacter(character)).finally(() => setLoading(false))
     }, []);
+
     return {character, loading};
 }

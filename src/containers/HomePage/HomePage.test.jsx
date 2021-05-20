@@ -3,7 +3,7 @@ import {render, screen} from '@testing-library/react'
 import {rest} from 'msw'
 import {setupServer} from 'msw/node'
 import {MemoryRouter} from 'react-router'
-import ApiPage from './HomePage'
+import ApiPage from './HomePage.jsx'
 
 const server = setupServer(
     rest.get('https://rickandmortyapi.com/character:id', (req,res,ctx) => {

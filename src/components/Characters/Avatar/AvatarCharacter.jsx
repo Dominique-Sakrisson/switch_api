@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styles from './styles.css'
 
 const AvatarCharacter = ({name, image = '', allies = [], enemies = [], affiliation = ''}) => {
-    return <figure className={styles.figure} role='figure' aria-label='avatarFig'>
+    return <figure className={styles.figure} role='figure' aria-label='characterFig'>
             <img src={image} alt={name}/>
             
             <h2> Name: {name}</h2>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styles from './style.css'
 
 const RickNMCharacter= ({name='', image='', status='', species='', location=[], episodes=[]}) => {
-    return <figure className={styles.figure} role='figure' aria-label='rickNMFig'>
+    return <figure className={styles.figure} role='figure' aria-label='characterFig'>
             <img src={image} alt={name}/>
             <h2>Name: {name}</h2>
             <p> Status: {status} </p>
