@@ -16,6 +16,7 @@ const Characters = ({match}) => {
 
 
     if(loading) return <h1>loading..</h1>
+    
     return <CharacterList characters={characters} params={match.params.api}/>;
 }
 

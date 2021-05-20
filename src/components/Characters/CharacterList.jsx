@@ -10,7 +10,7 @@ const CharacterList = ({characters, params}) => {
         {characters.map(character => {
             switch(params) {
                 case 'ricknm': {
-                    return (<li key={`${character.id}-${character.name}`}>
+                    return (<li key={`${character.id}`}>
                         <Link to={`/${params}/${character.id}`}>
                             <RickNMCharacter
                                 name={character.name}

@@ -8,7 +8,7 @@ export const useCharacterDetails = (id, api) => {
 
     useEffect(() => {
         chooseApi(api, id)
-        .then((character) => setCharacter(character)).finally(setLoading(false))
+        .then((character) => setCharacter(character)).finally(() => setLoading(false))
     }, []);
     return {character, loading};
 }

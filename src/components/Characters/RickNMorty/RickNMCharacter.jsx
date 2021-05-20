@@ -12,7 +12,7 @@ const RickNMCharacter= ({name='', image='', status='', species='', location=[], 
                 <p>Location: {location.name}</p>  
                 </div> : <span></span>}
             {(episodes) ?<div className={styles.episodes}> Episodes: {episodes.map(episode =>(
-                <p>{episode}</p>
+                <p key={episode}>{episode}</p>
             ))} </div> : <span></span>} 
         </figure>
 }
