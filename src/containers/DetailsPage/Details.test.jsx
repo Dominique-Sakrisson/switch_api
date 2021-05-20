@@ -2,7 +2,7 @@ import React from 'react'
 import {render, screen, waitFor} from '@testing-library/react'
 import {rest} from 'msw'
 import {setupServer} from 'msw/node'
-import {MemoryRouter} from 'react-router'
+import {MemoryRouter, Route} from 'react-router-dom'
 import DetailsPage from './DetailsPage'
 
 const server = setupServer(
@@ -76,15 +76,17 @@ describe('Tests the Details page', () => {
     afterAll(()=> server.close());
     it('renders a character from selected api', async() => {
         render(
-            <MemoryRouter>
-                <DetailsPage/>
+            <MemoryRouter initialEntries={['/ricknm/1']}>
+                <Route path='ricknm/:id'>
+                    <DetailsPage />
+                </Route>
             </MemoryRouter>
             );
-            screen.getByText('loading');
+
             waitFor(() => {
                 const figure = screen.findByRole('figure', {name: 'characterFig'});
+                screen.getByText('Rick', {exact: false});
                 expect(figure).not.toBeEmptyDOMElement();
-
             })
     })
 })
