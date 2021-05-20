@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import CharacterList from '../../components/Characters/CharacterList'
-import {chooseApi} from '../../services/ApiHandler'
 import {useParams} from 'react-router-dom'
 import {useCharacters} from '../../hooks/characters'
 
@@ -10,7 +9,7 @@ const Characters = () => {
 
     if(loading) return <h1>loading..</h1>
     
-    return <CharacterList characters={characters} params={api}/>;
+    return <CharacterList characters={characters} /*params={api}*//>;
 }
 
 export default Characters;

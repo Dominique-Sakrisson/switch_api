@@ -1,4 +1,5 @@
 import React from 'react'
+import App from '../../components/app/App'
 import {render, screen, waitFor} from '@testing-library/react'
 import {rest} from 'msw'
 import {setupServer} from 'msw/node'
@@ -77,16 +78,16 @@ describe('Tests the Details page', () => {
     it('renders a character from selected api', async() => {
         render(
             <MemoryRouter initialEntries={['/ricknm/1']}>
-                <Route path='ricknm/:id'>
-                    <DetailsPage />
-                </Route>
+                <App />
+                <Route path='api/:id'/>
             </MemoryRouter>
             );
-
-            waitFor(() => {
-                const figure = screen.findByRole('figure', {name: 'characterFig'});
-                screen.getByText('Rick', {exact: false});
+//previously not returning waitFor() and this made the test pass no matter what, at this point the test fails lol
+            return waitFor(() => {
+                const figure = screen.getByRole('figure', {name: 'characterFig'});
+                // screen.getByText('Rick', {exact: false});
                 expect(figure).not.toBeEmptyDOMElement();
+                expect(figure).toMatchSnapshot();
             })
     })
 })
