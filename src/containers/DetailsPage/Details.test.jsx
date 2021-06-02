@@ -5,6 +5,7 @@ import {rest} from 'msw'
 import {setupServer} from 'msw/node'
 import {MemoryRouter, Route} from 'react-router-dom'
 import DetailsPage from './DetailsPage'
+import ThemeProvider from '../../components/state/Themprovider'
 
 const server = setupServer(
     rest.get(`https://rickandmortyapi.com/api/character/1`, (req,res,ctx) => {
@@ -78,8 +79,10 @@ describe('Tests the Details page', () => {
     it('renders a character from selected api', async() => {
         render(
             <MemoryRouter initialEntries={['/ricknm/1']}>
-                <App />
-                <Route path='api/:id'/>
+                <ThemeProvider >
+                    <App />
+                    <Route path='api/:id'/>
+                </ThemeProvider>
             </MemoryRouter>
             );
 //previously not returning waitFor() and this made the test pass no matter what, at this point the test fails lol

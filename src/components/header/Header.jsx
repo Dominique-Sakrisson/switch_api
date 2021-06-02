@@ -5,16 +5,22 @@ import styles from '../../styles/style.css'
 const Header = () => {
     const changeTheme = useModify();
     const theme = useTheme();    
-    
-    const handleInputChange = (e) => {
-        (e.target.checked ? changeTheme('dark') : changeTheme('light'));
+    // const themeMap = {
+    //     light: 'dark',
+    //     dark: 'light'
+    // };
+
+    const handleInputChange = () => {
+        changeTheme(theme === 'dark' ? 'light': 'dark');
+        // changeTheme(themeMap[theme]);
     }
 
     return (  
     <div>
         <h1>Character Listerererer</h1>
-        <label aria-label='bg-change'>Dark Mode?
+        <label >Dark Mode?
             <input 
+                aria-label='bg-change'
                 type='checkbox' 
                 onChange={handleInputChange}
                 checked={theme === 'dark'}

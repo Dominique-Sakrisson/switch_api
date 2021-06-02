@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import {
-  BrowserRouter as Router,
+  MemoryRouter as Router,
 } from 'react-router-dom';
 import App from './components/app/App';
 import ThemeProvider from './components/state/Themprovider'
