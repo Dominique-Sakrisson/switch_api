@@ -7,8 +7,8 @@ import {useTheme} from '../../components/state/Themprovider'
 const ApiPage = () => {
     const theme = useTheme();
     return (
-    <div className={theme === 'dark' ? styles.darkMode : styles.default}>
-        <Header />
+    <div>
+        
         <ApiList />
     </div>
     )

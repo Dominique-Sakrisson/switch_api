@@ -1,14 +1,24 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 const ThemeContext = createContext();
 
 const ThemeProvider = ({children}) => {
-    const [theme, setTheme] = useState('default');
 
-    const modify = (theme) => setTheme(theme);
+    const [theme, setTheme] = useState('light');
+
+    const modify = (theme) => {
+        localStorage.setItem("theme", theme)
+        setTheme(theme)
+    };
 
     const state = {theme, modify};
+
+    useEffect(() => {
+        const theme = String(localStorage.getItem("theme"))
+
+        setTheme(theme);
+    }, [])
 
     return(
         <ThemeContext.Provider value={state}>{children}</ThemeContext.Provider>
