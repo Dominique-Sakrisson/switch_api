@@ -5,11 +5,16 @@ import {
 import HomePage from '../../containers/HomePage/HomePage';
 import Characters from '../../containers/CharactersPage/Characters'
 import DetailsPage from '../../containers/DetailsPage/DetailsPage'
+import styles from '../../styles/style.css'
+import {useTheme} from '../state/Themprovider'
+import Header from '../header/Header'
 
 export default function App() {
+  const theme = useTheme();
   return(
-    <div>
+    <div className={theme === 'dark' ? styles.darkMode : styles.default}>
       <header>
+        <Header ></Header>
         <>
           <Link to=''></Link>
           <Switch>
