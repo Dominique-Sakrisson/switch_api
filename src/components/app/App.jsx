@@ -1,8 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
-  Route,
-  Switch
+  Switch, Route, Link, BrowserRouter as Router
 } from 'react-router-dom';
 import HomePage from '../../containers/HomePage/HomePage';
 import Characters from '../../containers/CharactersPage/Characters'
@@ -12,7 +10,10 @@ export default function App() {
   return(
     <div>
       <header>
+        {/* <Header ></Header> */}
+        <>
         <Router>
+          <Link to=''></Link>
           <Switch>
             <Route path='/' 
             exact
@@ -29,6 +30,7 @@ export default function App() {
             
           </Switch>
         </Router>
+        </>
       </header>
     </div>
   )
