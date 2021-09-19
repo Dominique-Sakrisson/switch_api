@@ -5,13 +5,19 @@ import {
 import HomePage from '../../containers/HomePage/HomePage';
 import Characters from '../../containers/CharactersPage/Characters'
 import DetailsPage from '../../containers/DetailsPage/DetailsPage'
+import styles from '../../styles/style.css'
+import {useTheme} from '../state/Themprovider'
+import Header from '../header/Header'
 
 export default function App() {
+  const theme = useTheme();
   return(
-    <div>
+    <div className={theme === 'dark' ? styles.darkMode : styles.default}>
       <header>
-        {/* <Header ></Header> */}
+        <Header ></Header>
         <>
+
+          {/* <Link to=''></Link> */}
         <Router>
           <Link to=''></Link>
           <Switch>
@@ -27,9 +33,8 @@ export default function App() {
             exact
             render={(routerProps) => <DetailsPage{...routerProps}/>} 
             />
-            
           </Switch>
-        </Router>
+          </Router>
         </>
       </header>
     </div>

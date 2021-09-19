@@ -1,26 +1,96 @@
 import React from 'react'
-import {render, screen} from '@testing-library/react'
+import App from '../../components/app/App'
+import {render, screen, waitFor} from '@testing-library/react'
 import {rest} from 'msw'
 import {setupServer} from 'msw/node'
-import {MemoryRouter} from 'react-router'
-import ApiPage from './HomePage'
+import {MemoryRouter, Route} from 'react-router-dom'
+import DetailsPage from './DetailsPage'
+import ThemeProvider from '../../components/state/Themprovider'
 
 const server = setupServer(
-    rest.get('https://rickandmortyapi.com/character:id', (req,res,ctx) => {
-        if (req.params.id)
-        return res(ctx.json(/* */));
+    rest.get(`https://rickandmortyapi.com/api/character/1`, (req,res,ctx) => {
+        return res(ctx.json({
+            "id": 1,
+            "name": "Rick Sanchez",
+            "status": "Alive",
+            "species": "Human",
+            "type": "",
+            "gender": "Male",
+            "origin": {
+                "name": "Earth (C-137)",
+                "url": "https://rickandmortyapi.com/api/location/1"
+            },
+            "location": {
+                "name": "Earth (Replacement Dimension)",
+                "url": "https://rickandmortyapi.com/api/location/20"
+            },
+            "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+            "episode": [
+                "https://rickandmortyapi.com/api/episode/1",
+                "https://rickandmortyapi.com/api/episode/2",
+                "https://rickandmortyapi.com/api/episode/3",
+                "https://rickandmortyapi.com/api/episode/4",
+                "https://rickandmortyapi.com/api/episode/5",
+                "https://rickandmortyapi.com/api/episode/6",
+                "https://rickandmortyapi.com/api/episode/7",
+                "https://rickandmortyapi.com/api/episode/8",
+                "https://rickandmortyapi.com/api/episode/9",
+                "https://rickandmortyapi.com/api/episode/10",
+                "https://rickandmortyapi.com/api/episode/11",
+                "https://rickandmortyapi.com/api/episode/12",
+                "https://rickandmortyapi.com/api/episode/13",
+                "https://rickandmortyapi.com/api/episode/14",
+                "https://rickandmortyapi.com/api/episode/15",
+                "https://rickandmortyapi.com/api/episode/16",
+                "https://rickandmortyapi.com/api/episode/17",
+                "https://rickandmortyapi.com/api/episode/18",
+                "https://rickandmortyapi.com/api/episode/19",
+                "https://rickandmortyapi.com/api/episode/20",
+                "https://rickandmortyapi.com/api/episode/21",
+                "https://rickandmortyapi.com/api/episode/22",
+                "https://rickandmortyapi.com/api/episode/23",
+                "https://rickandmortyapi.com/api/episode/24",
+                "https://rickandmortyapi.com/api/episode/25",
+                "https://rickandmortyapi.com/api/episode/26",
+                "https://rickandmortyapi.com/api/episode/27",
+                "https://rickandmortyapi.com/api/episode/28",
+                "https://rickandmortyapi.com/api/episode/29",
+                "https://rickandmortyapi.com/api/episode/30",
+                "https://rickandmortyapi.com/api/episode/31",
+                "https://rickandmortyapi.com/api/episode/32",
+                "https://rickandmortyapi.com/api/episode/33",
+                "https://rickandmortyapi.com/api/episode/34",
+                "https://rickandmortyapi.com/api/episode/35",
+                "https://rickandmortyapi.com/api/episode/36",
+                "https://rickandmortyapi.com/api/episode/37",
+                "https://rickandmortyapi.com/api/episode/38",
+                "https://rickandmortyapi.com/api/episode/39",
+                "https://rickandmortyapi.com/api/episode/40",
+                "https://rickandmortyapi.com/api/episode/41"
+            ],
+            "url": "https://rickandmortyapi.com/api/character/1",
+            "created": "2017-11-04T18:48:46.250Z"
+        }));
     })
 );
-describe('Tests the ApiPage', () => {
+describe('Tests the Details page', () => {
     beforeAll(() => server.listen());
     afterAll(()=> server.close());
-    it('renders a list of api\'s to call from', async() => {
+    it('renders a character from selected api', async() => {
         render(
-            <MemoryRouter>
-                <ApiPage />
-            </MemoryRouter>);
-            screen.getByText('Choose your favorite show');
-            const ul = await screen.findByRole('figure', {name: 'api-choices'});
-        
+            <MemoryRouter initialEntries={['/ricknm/1']}>
+                <ThemeProvider >
+                    <App />
+                    <Route path='api/:id'/>
+                </ThemeProvider>
+            </MemoryRouter>
+            );
+//previously not returning waitFor() and this made the test pass no matter what, at this point the test fails lol
+            return waitFor(() => {
+                const figure = screen.getByRole('figure', {name: 'characterFig'});
+                // screen.getByText('Rick', {exact: false});
+                expect(figure).not.toBeEmptyDOMElement();
+                expect(figure).toMatchSnapshot();
+            })
     })
 })

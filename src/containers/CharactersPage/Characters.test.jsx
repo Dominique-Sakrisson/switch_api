@@ -15,13 +15,13 @@ const server = setupServer(
 describe('Tests characters list page', () => {
     beforeAll(() => server.listen());
     afterAll(()=> server.close());
-    it('renders a list of characters from chosen show', () => {
+    it('renders a list of characters from chosen show', async() => {
         render(
             <MemoryRouter>
                 <Characters />
             </MemoryRouter>
         );
-        screen.getByText('');
-    
+        screen.getByText('loading..');
+        const ul = await screen.findByRole('list', {name: 'characters'});
     })
 })

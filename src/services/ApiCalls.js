@@ -5,7 +5,7 @@ export const getAvatar = async (char) => {
         return {
             id: json._id,
             name: json.name,
-            image: json.photoUrl,
+            image: json.photoUrl || 'http://placekitten.com/200/300',
             allies: json.allies,
             enemies: json.enemies,
             affiliation: json.affiliation
@@ -17,10 +17,10 @@ export const getAvatar = async (char) => {
         return {
             id: item._id,
             name: item.name,
-            image: item.photoUrl,
+            image: item.photoUrl || 'http://placekitten.com/200/300',
             allies: item.allies,
             enemies: item.enemies,
-            affiliation: item.affiliation
+            affiliation: item.affiliation || 'No affiliation'
         }
     })
     return resArray;

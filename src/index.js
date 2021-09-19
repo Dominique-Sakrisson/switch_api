@@ -1,8 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
+import {
+  MemoryRouter as Router,
+} from 'react-router-dom';
 import App from './components/app/App';
+import ThemeProvider from './components/state/Themprovider'
 
 render(
-  <App />,
+  <Router>
+    <ThemeProvider>
+      <App />
+
+    </ThemeProvider>
+  </Router>,
   document.getElementById('root')
 );

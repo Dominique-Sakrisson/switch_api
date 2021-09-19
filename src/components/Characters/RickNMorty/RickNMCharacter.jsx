@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './style.css'
 
-const RickNMCharacter= ({name, image, status, species, location, episodes}) => {
-    return <figure className={styles.figure} role='figure' aria-label='rickNMFig'>
+const RickNMCharacter= ({name='', image='', status='', species='', location=[], episodes=[]}) => {
+    return <figure className={styles.figure} role='figure' aria-label='characterFig'>
             <img src={image} alt={name}/>
             <h2>Name: {name}</h2>
             <p> Status: {status} </p>
@@ -12,7 +12,7 @@ const RickNMCharacter= ({name, image, status, species, location, episodes}) => {
                 <p>Location: {location.name}</p>  
                 </div> : <span></span>}
             {(episodes) ?<div className={styles.episodes}> Episodes: {episodes.map(episode =>(
-                <p>{episode}</p>
+                <p key={episode}>{episode}</p>
             ))} </div> : <span></span>} 
         </figure>
 }
