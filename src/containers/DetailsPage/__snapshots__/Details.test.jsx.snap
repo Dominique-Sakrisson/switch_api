@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests the Details page renders a character from selected api 1`] = `
+<a
+  href="/ricknm"
+  style="text-decoration: none;"
+>
+  ricknm
+</a>
+`;

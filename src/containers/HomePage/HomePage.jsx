@@ -1,10 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import ApiList from '../../components/Apis/ApiList.jsx'
+import Header from '../../components/header/Header'
+import styles from '../../styles/style.css'
+import {useTheme} from '../../components/state/Themprovider'
 
 const ApiPage = () => {
-    const [loading, setLoading] = useState(true);
-    const [apis] = useState(['ricknm', 'avatar' ]);
-    return <ApiList apis={apis}/>
+    const theme = useTheme();
+    return (
+    <div>
+        
+        <ApiList />
+    </div>
+    )
 }
 
 export default ApiPage;

@@ -2,23 +2,26 @@ import React, {useState, useEffect} from 'react'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import ApiItem from './ApiItem'
 import PropTypes from 'prop-types'
+import styles from './styleApi.css'
+import rootStyles from '../../styles/style.css'
+import {useTheme} from '../state/Themprovider'
+const apis = ['ricknm', 'avatar'];
+const ApiList = () => {
+    const theme = useTheme();
 
-const ApiList = ({apis}) => (
-    <>
+ return(   <>
     <p>Choose your favorite show</p>
-    <ul aria-label='api-choices'>
+    <ul className={styles.apiList} aria-label='api-choices'>
         {apis.map((api) => (
-            <li key={api}>
-                <Link to={`/${api}`}>
+            <li className={styles.listItem} key={api}>
+                <Link to={`/${api}`} style={{textDecoration: 'none'}}>
                 {api}
                 </Link>
             </li>
         ))}
     </ul>
     </>
-)
-
-ApiList.propTypes= {
-    apis: PropTypes.array.isRequired
+ )
 }
+
 export default ApiList;
