@@ -21,8 +21,7 @@ describe('Tests the ApiPage', () => {
         render(
             <MemoryRouter>
                 <ThemeProvider >
-                    <App >
-                       
+                    <App >  
                     </App>
                 </ThemeProvider>
             </MemoryRouter>);
