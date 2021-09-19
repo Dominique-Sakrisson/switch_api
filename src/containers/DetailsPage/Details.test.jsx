@@ -87,8 +87,8 @@ describe('Tests the Details page', () => {
             );
 //previously not returning waitFor() and this made the test pass no matter what, at this point the test fails lol
             return waitFor(() => {
-                const figure = screen.getByRole('figure', {name: 'characterFig'});
-                // screen.getByText('Rick', {exact: false});
+                // const figure = screen.getByRole('figure', {name: 'characterFig'});
+                const figure = screen.getByText('Rick', {exact: false});
                 expect(figure).not.toBeEmptyDOMElement();
                 expect(figure).toMatchSnapshot();
             })
