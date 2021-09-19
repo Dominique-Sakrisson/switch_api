@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Switch, Route, Link
+  Switch, Route, Link, BrowserRouter as Router
 } from 'react-router-dom';
 import HomePage from '../../containers/HomePage/HomePage';
 import Characters from '../../containers/CharactersPage/Characters'
@@ -16,7 +16,9 @@ export default function App() {
       <header>
         <Header ></Header>
         <>
-          <Link to=''></Link>
+
+          {/* <Link to=''></Link> */}
+        <Router>
           <Switch>
             <Route path='/' 
             exact
@@ -31,6 +33,7 @@ export default function App() {
             render={(routerProps) => <DetailsPage{...routerProps}/>} 
             />
           </Switch>
+          </Router>
         </>
       </header>
     </div>
